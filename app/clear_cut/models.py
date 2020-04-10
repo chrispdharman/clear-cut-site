@@ -7,4 +7,6 @@ class ClearCutConfig(models.Model):
     """
     is_default = models.BooleanField(default=False)
 
-    hyperparameter_one = models.IntegerField()
+    image_size_threshold = models.IntegerField(default=600)
+    
+    noisy_pixel_tolerance = models.IntegerField(default=4)
