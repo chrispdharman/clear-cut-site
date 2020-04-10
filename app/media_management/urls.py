@@ -1,7 +1,9 @@
-from django.urls import path
+from django.urls import include, path
 
-from . import views
+from media_management import views
+
 
 urlpatterns = [
+    path('api/', include('media_management.api.urls')),
     path('', views.index, name='index'),
 ]

@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import MediaItem
+from media_management.models import MediaItem
 
 
 def index(request):

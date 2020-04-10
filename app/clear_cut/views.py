@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import ClearCutConfig
+from clear_cut.models import ClearCutConfig
 
 
 def index(request):

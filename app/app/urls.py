@@ -18,6 +18,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('clear-cut/', include('clear_cut.urls')),
-    path('media-items/', include('media_management.urls')),
+    path('manage/', include('media_management.urls')),
     path('admin/', admin.site.urls),
 ]

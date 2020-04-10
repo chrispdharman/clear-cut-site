@@ -1,5 +1,6 @@
 from django.contrib import admin
 
-from .models import MediaItem
+from media_management.models import MediaItem
+
 
 admin.site.register(MediaItem)
