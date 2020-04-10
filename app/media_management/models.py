@@ -5,15 +5,19 @@ from django.db import models
 
 from .constants import ALLOWED_MEDIA_TYPES
 
+from clear_cut.models import ClearCutConfig
+
 
 class MediaItem(models.Model):
     """
     Object intended to capture and Image pre- and post-processing storage .
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    original_media_url = models.URLField(max_length=200)
-
-    clear_cut_media_url = models.URLField(max_length=200)
+    clear_cut_config = models.ForeignKey(ClearCutConfig, on_delete=models.CASCADE, null=True)
 
     media_type = models.IntegerField(choices=ALLOWED_MEDIA_TYPES, default=0)
+
+    media_url_original = models.URLField(max_length=200)
+
+    media_url_clear_cut = models.URLField(max_length=200)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
