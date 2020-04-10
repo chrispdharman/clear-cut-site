@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('clear-cut/', include('clear_cut.urls')),
-    path('manage/', include('media_management.urls')),
+    path('admin/clear-cut/', include('clear_cut.urls')),
+    path('admin/manage/', include('media_management.urls')),
     path('admin/', admin.site.urls),
 ]
