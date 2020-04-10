@@ -3,7 +3,7 @@ import math
 from django.contrib.auth.models import User
 from django.db import models
 
-from app.media_management.constants import ALLOWED_MEDIA_TYPES
+from .constants import ALLOWED_MEDIA_TYPES
 
 
 class MediaItem(models.Model):
@@ -16,4 +16,4 @@ class MediaItem(models.Model):
 
     clear_cut_media_url = models.URLField(max_length=200)
 
-    media_type = models.models.IntegerField(choices=ALLOWED_MEDIA_TYPES, default=0)
+    media_type = models.IntegerField(choices=ALLOWED_MEDIA_TYPES, default=0)
