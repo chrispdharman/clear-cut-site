@@ -1,0 +1,9 @@
+{% if clear_cut_configs %}
+    <ul>
+    {% for clear_cut_config in clear_cut_configs %}
+        <li>{{ clear_cut_config }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No clear_cut_configs found.</p>
+{% endif %}

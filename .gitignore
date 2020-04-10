@@ -1,2 +1,6 @@
+# Db
+db.sqlite3
+
+# Python modules
 __pycache__
 venv
