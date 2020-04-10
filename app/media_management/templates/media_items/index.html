@@ -1,0 +1,9 @@
+{% if media_items %}
+    <ul>
+    {% for media_item in media_items %}
+        <li>{{ media_item }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No media_items found.</p>
+{% endif %}
