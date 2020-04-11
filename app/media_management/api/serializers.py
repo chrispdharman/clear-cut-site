@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
+from clear_cut.api.serializers import ClearCutConfigSerializer
 from media_management import constants
 from media_management.models import MediaItem
 
@@ -13,6 +14,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 class MediaItemSerializer(serializers.ModelSerializer):
     media_type = serializers.SerializerMethodField()
+
+    clear_cut_config = ClearCutConfigSerializer(read_only=True)
     user = UserSerializer(read_only=True)
 
     class Meta:
