@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class MediaItemSerializer(serializers.ModelSerializer):
     media_type = serializers.SerializerMethodField()
-    user = UserSerializer()
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = MediaItem
