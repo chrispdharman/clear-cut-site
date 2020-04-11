@@ -1,6 +1,3 @@
 {
-    "python.pythonPath": "venv/bin/python3",
-    "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/app"
-    ]
+    "python.pythonPath": "venv/bin/python3"
 }
