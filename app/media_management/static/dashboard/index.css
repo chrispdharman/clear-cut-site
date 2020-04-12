@@ -12,6 +12,10 @@ tr, th {
     padding: 3px;
 }
 
+tr.special {
+    background-color: blanchedalmond;
+}
+
 .media-items img {
     width: 160px;
 }

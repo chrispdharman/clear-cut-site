@@ -3,33 +3,38 @@
 <html>
 <head>
     <title>ClearCut Dashboard</title>
-    <link rel="stylesheet" href="{% static 'dashboard/index.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/index.css' %}" />
+    <script type="text/javascript" src="{% static 'dashboard/utils.js' %}"></script>
 </head>
-<body>
+<body onload="init()">
     <div class="container media-items">
-        {% if media_items %}
         <table cellspacing="0">
-            <tr>
+            <tr class="special">
                 <th><p>Media Item Id:</p></th>
+                <th><p>Media Type:</p></th>
                 <th><p>Original Url:</p></th>
                 <th><p>ClearCut Url:</p></th>
             </tr>
-            {% for media_item in media_items %}
+        {% for media_item in media_items %}
             <tr>
                 <th>{{ media_item.id }}</th>
-                <th><img src="{{ media_item.media_url_original }}" alt="Original image displayed"></th>
-                <th><img src="{{ media_item.media_url_clear_cut }}" alt="Original image displayed"></th>
+                <th class="media-type-to-name" data-media-type="{{media_item.media_type_name}}"></th>
+                <th><img src="{{ media_item.media_url_original }}" alt="Original media displayed"></th>
+                <th><img src="{{ media_item.media_url_clear_cut }}" alt="ClearCut media displayed"></th>
             </tr>
-            {% endfor %}
+        {% endfor %}
+            <tr class="special">
+                <th>
+                <div class="add-media-item">
+                    <p>Add new media item</p>
+                    <a href="{% url 'list_create_media' %}"><span>&#43;</span></a>
+                </div>
+                </th>
+                <th><input type="text" id="media-type" /></th>
+                <th><input type="text" id="original-url" /></th>
+                <th><input type="text" id="clearcut-url" /></th>
+            </tr>
         </table>
-        {% else %}
-            <p>No media_items found.</p>
-        {% endif %}
-
-        <div class="add-media-item">
-            <p>Add new media item</p>
-            <a href="{% url 'list_create_media' %}"><span>&#43;</span></button>
-        </div>
     </div>
 </body>
 </html>
