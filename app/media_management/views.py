@@ -6,7 +6,7 @@ from media_management.models import MediaItem
 
 def index(request):
     recent_media_items = MediaItem.objects.order_by('-id')
-    template = loader.get_template('media_items/index.html')
+    template = loader.get_template('dashboard/index.html')
     context = {
         'media_items': recent_media_items,
     }

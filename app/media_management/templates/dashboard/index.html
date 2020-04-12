@@ -1,0 +1,30 @@
+{% load static %}
+
+<html>
+<head>
+    <title>ClearCut Dashboard</title>
+    <link rel="stylesheet" href="{% static 'dashboard/index.css' %}">
+</head>
+<body>
+    <div class="container media-items">
+        {% if media_items %}
+        <table class="media-items" cellspacing="0">
+            <tr>
+                <th><p>Media Item Id:</p></th>
+                <th><p>Original Url:</p></th>
+                <th><p>ClearCut Url:</p></th>
+            </tr>
+            {% for media_item in media_items %}
+            <tr>
+                <th>{{ media_item.id }}</th>
+                <th><img src="{{ media_item.media_url_original }}" alt="Original image displayed"></th>
+                <th><img src="{{ media_item.media_url_clear_cut }}" alt="Original image displayed"></th>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>No media_items found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

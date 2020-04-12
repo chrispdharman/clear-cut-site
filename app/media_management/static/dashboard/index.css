@@ -1,0 +1,17 @@
+div.container {
+    padding: 5px;
+}
+
+table {
+    width: 50%;
+}
+
+th, td {
+    border: 1px solid black;
+    min-width: 120px;
+    padding: 3px;
+}
+
+.media-items img {
+    width: 160px;
+}
