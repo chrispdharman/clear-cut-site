@@ -6,7 +6,7 @@ table {
     width: 50%;
 }
 
-th, td {
+tr, th {
     border: 1px solid black;
     min-width: 120px;
     padding: 3px;
@@ -14,4 +14,23 @@ th, td {
 
 .media-items img {
     width: 160px;
+}
+
+.add-media-item {
+    padding: 5px;
+}
+
+.add-media-item p {
+    display: inline;
+}
+
+.add-media-item a {
+    border: 1px solid gold;
+    border-radius: 3px;
+    background-color: green;
+    color: beige;
+    min-height: 20px;
+    min-width: 20px;
+    text-decoration: none;
+    padding: 2px 6px 2px 6px;
 }
