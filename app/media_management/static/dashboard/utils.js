@@ -19,7 +19,7 @@ function init() {
 
     while(media_type_index--) {
         var element = media_type_elements[media_type_index];
-        var mediaType = element.getAttribute("data-media-type");
+        var mediaType = element.getAttribute("data-value");
         element.innerHTML = convertMediaType(mediaType);
     };
 }
