@@ -24,10 +24,12 @@
             </tr>
         {% endfor %}
             <tr class="special">
+            <form action="{% url 'list_create_media' %}" method="post">
+                {% csrf_token %}
                 <th>
                     <div class="add-media-item">
-                        <p>Add new media item</p>
-                        <a href="{% url 'list_create_media' %}"><span>&#43;</span></a>
+                        <p>Add</p>
+                        <input type="submit" value="&#43;">
                     </div>
                 </th>
                 <th>
@@ -43,6 +45,7 @@
                 <th>
                     <input type="text" id="clearcut-url" />
                 </th>
+            </form>
             </tr>
         </table>
     </div>

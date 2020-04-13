@@ -28,7 +28,7 @@ tr.special {
     display: inline;
 }
 
-.add-media-item a {
+.add-media-item input {
     border: 1px solid gold;
     border-radius: 3px;
     background-color: green;
