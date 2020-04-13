@@ -25,14 +25,24 @@
         {% endfor %}
             <tr class="special">
                 <th>
-                <div class="add-media-item">
-                    <p>Add new media item</p>
-                    <a href="{% url 'list_create_media' %}"><span>&#43;</span></a>
-                </div>
+                    <div class="add-media-item">
+                        <p>Add new media item</p>
+                        <a href="{% url 'list_create_media' %}"><span>&#43;</span></a>
+                    </div>
                 </th>
-                <th><input type="text" id="media-type" /></th>
-                <th><input type="text" id="original-url" /></th>
-                <th><input type="text" id="clearcut-url" /></th>
+                <th>
+                    <select type="text" id="media-type">
+                        <option value="0">------</option>
+                        <option value="1">Image</option>
+                        <option value="2">Video</option>
+                    </select>
+                </th>
+                <th>
+                    <input type="text" id="original-url" />
+                </th>
+                <th>
+                    <input type="text" id="clearcut-url" />
+                </th>
             </tr>
         </table>
     </div>
