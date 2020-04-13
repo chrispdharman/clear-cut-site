@@ -18,7 +18,7 @@
         {% for media_item in media_items %}
             <tr>
                 <th>{{ media_item.id }}</th>
-                <th class="media-type-to-name" data-value={{media_item.media_type_name}}></th>
+                <th class="media-type-to-name" data-value={{media_item.media_type}}></th>
                 <th><img src="{{ media_item.media_url_original }}" alt="Original media displayed"></th>
                 <th><img src="{{ media_item.media_url_clear_cut }}" alt="ClearCut media displayed"></th>
             </tr>

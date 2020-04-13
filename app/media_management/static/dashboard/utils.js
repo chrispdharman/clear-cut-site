@@ -1,14 +1,13 @@
 function convertMediaType(params) {
-    console.log("params", params);
     var media_type_value = params[0];
-    if (Number.isInteger(media_type_value)) {
+    if (parseInt(media_type_value) != NaN) {
         switch (media_type_value) {
             case "1":
-                return "IMAGE";
+                return "Image";
             case "2":
-                return "VIDEO";
+                return "Video";
             default:
-                return "UNKNOWN";
+                return "Unknown";
         }
     }
 }
