@@ -1,8 +1,28 @@
-<!-- Actual login form -->
-<form class="login" method="POST" action="/login/">
-    {% csrf_token %}
-    {{form.as_p}}
-    <li>
-        <input type="submit" class="logBut" value="Log in"/>
-    </li>
-</form>
+{% load static %}
+
+<html>
+
+<head>
+    <title>ClearCut Login</title>
+    <link rel="stylesheet" href="{% static 'login/index.css' %}" />
+    <script type="text/javascript" src="{% static 'login/utils.js' %}"></script>
+</head>
+
+<body onload="init()">
+    <div class="splash">
+        <!-- Splash images -->
+        <img class="final-image" src="{{ splash_image_final }}" alt="Final splash image">
+        <img class="initial-image" id="initial-image" src="{{ splash_image_initial }}" alt="Initial splash image">
+        
+        <!-- Actual login form -->
+        <form class="login" method="POST" action="/login/">
+            {% csrf_token %}
+            {{form.as_p}}
+            <li>
+                <input type="submit" class="logBut" value="Log in"/>
+            </li>
+        </form>
+    </div>
+</body>
+
+</html>
