@@ -23,7 +23,7 @@ urlpatterns = [
     path('login/', CustomLoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     # Admin console paths
-    path('admin/clear-cut/', include('clear_cut.urls')),
-    path('admin/manage/', include('media_management.urls')),
+    path('clear-cut/', include('clear_cut.urls')),
+    path('manage/', include('media_management.urls')),
     path('admin/', admin.site.urls),
 ]

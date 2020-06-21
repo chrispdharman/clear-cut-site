@@ -121,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Authentication Redirects
-LOGIN_REDIRECT_URL = '/admin/manage/'
+LOGIN_REDIRECT_URL = '/manage/'
 LOGOUT_REDIRECT_URL = '/login/'
 
 # Internationalization
