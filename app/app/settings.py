@@ -120,6 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Authentication Redirects
+LOGIN_REDIRECT_URL = '/admin/manage/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

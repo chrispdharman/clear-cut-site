@@ -27,5 +27,15 @@ form {
 }
 
 p, input {
-    font-family: "Courier New", Courier 
+    font-family: "Courier New", Courier;
+}
+
+ul.errorlist {
+    font-family: "Courier New", Courier;
+    color: red;
+    background-color: cornsilk;
+}
+
+ul, li {
+    list-style: none;
 }
