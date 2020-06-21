@@ -1,0 +1,53 @@
+{% load static %}
+
+<html>
+
+<head>
+    <title>ClearCut Dashboard</title>
+    <link rel="stylesheet" href="{% static 'manage/index.css' %}" />
+    <script type="text/javascript" src="{% static 'manage/utils.js' %}"></script>
+</head>
+
+<body onload="init()">
+    <!-- Actions bar -->
+    <div class="actions">
+        <div class="create-item">Drag 'n' Drop Zone here</div>
+        {% comment %} <form action="{% url 'list_create_media' %}" method="post">
+            {% csrf_token %}
+            <th>
+                <div class="add-media-item">
+                    <p>New</p>
+                    <input type="submit" value="&#43;">
+                </div>
+            </th>
+            <th>
+                <select type="text" id="media-type">
+                    <option value="0">------</option>
+                    <option value="1">Image</option>
+                    <option value="2">Video</option>
+                </select>
+            </th>
+            <th>
+                <input type="text" id="original-url" placeholder="Original image url here" />
+            </th>
+            <th>
+                <input type="text" id="clearcut-url" placeholder="ClearCut image url here" />
+            </th>
+        </form> {% endcomment %}
+    </div>
+
+    <!-- List media items -->>
+    <div class="container media-items">
+        {% for media_item in media_items %}
+        <div class="item-wrapper" data-id="{{media_item.id}}">
+            <p class="media-type-to-name" data-value={{media_item.media_type}}></p>
+            <div class="item-media">
+                <img class='clearcut-image' src="{{ media_item.media_url_clear_cut }}" alt="ClearCut media displayed">
+                <img class='original-image' src="{{ media_item.media_url_original }}" alt="Original media displayed">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

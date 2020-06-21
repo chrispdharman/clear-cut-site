@@ -5,7 +5,7 @@ from media_management.models import MediaItem
 
 
 def index(request):
-    template = loader.get_template('dashboard/index.html')
+    template = loader.get_template('manage/index.html')
 
     recent_media_items = MediaItem.objects.order_by('-id')
 

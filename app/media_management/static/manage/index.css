@@ -1,0 +1,35 @@
+.item-wrapper {
+    display: inline-block;
+    padding: 0;
+    border: 2px rebeccapurple solid;
+}
+
+.media-items img {
+    width: 200px;
+}
+
+.media-items img.clearcut-image {
+    position: relative;
+    left: 102px;
+    -webkit-transition: transform 1.6s;
+    -moz-transition: transform 1.6s;
+    -o-transition: transform 1.6s;
+    transition: transform 1.6s;
+}
+
+.media-items img.original-image {
+    position: relative;
+    left: -102px;
+    -webkit-transition: transform 1.6s;
+    -moz-transition: transform 1.6s;
+    -o-transition: transform 1.6s;
+    transition: transform 1.6s;
+}
+
+div.item-media:hover .original-image {
+    transform: translate(-102px);
+}
+
+div.item-media:hover .clearcut-image {
+    transform: translate(102px);
+}
