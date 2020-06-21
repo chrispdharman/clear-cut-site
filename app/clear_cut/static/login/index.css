@@ -25,3 +25,7 @@ form {
     -o-transition: opacity 1.6s ease-in-out;
     transition: opacity 1.6s ease-in-out;
 }
+
+p, input {
+    font-family: "Courier New", Courier 
+}
