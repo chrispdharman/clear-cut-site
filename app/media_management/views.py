@@ -18,11 +18,7 @@ def index(request):
 def uploader(request):
     template = loader.get_template('manage/uploader.html')
 
-    recent_media_items = MediaItem.objects.order_by('-id')
-    serializer = MediaItemSerializer(recent_media_items[0])
-
     context = {
-        'media_items': recent_media_items,
-        'serializer': serializer,
+        'serializer': MediaItemSerializer(),
     }
     return HttpResponse(template.render(context, request))
