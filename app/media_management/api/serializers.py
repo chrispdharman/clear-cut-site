@@ -44,8 +44,6 @@ class MediaItemSerializer(serializers.ModelSerializer):
 
 
 class MediaImageSerializer(serializers.ModelSerializer):
-    media_item = MediaItemSerializer(read_only=True, many=False)
-
     class Meta:
         model = MediaImage
         fields = '__all__'
