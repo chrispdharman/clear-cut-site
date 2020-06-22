@@ -47,13 +47,14 @@ form #upload-item, #file-uploader {
 }
 
 div.meta {
+    top: 0;
     position: sticky;
     position: -webkit-sticky; /* Safari */
     text-align: left;
     padding: 20px;
     padding-left: 20%;
-    z-index: 1;
-    border: 1px red solid;
+    background-color: white;
+    z-index: 2;
     overflow: auto;
 }
 
