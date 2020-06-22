@@ -13,7 +13,7 @@ document.getElementById("display-clear-cuts").onclick = function() {
         document.getElementById("display-clear-cuts-icon").style.backgroundColor = "white";
         document.getElementById("display-clear-cuts-text").innerHTML = "Toggle: Original";
     } else {
-        document.getElementById("display-clear-cuts-icon").style.backgroundColor = "coral";
+        document.getElementById("display-clear-cuts-icon").style.backgroundColor = "paleturquoise";
         document.getElementById("display-clear-cuts-text").innerHTML = "Toggle: ClearCut";
     }
 };
@@ -41,7 +41,7 @@ document.getElementById("display-spread").onclick = function() {
         document.getElementById("display-spread-icon").style.backgroundColor = "white";
         document.getElementById("display-spread-text").innerHTML = "View: Single";
     } else {
-        document.getElementById("display-spread-icon").style.backgroundColor = "coral";
+        document.getElementById("display-spread-icon").style.backgroundColor = "paleturquoise";
         document.getElementById("display-spread-text").innerHTML = "View: Spread";
     }
 };
