@@ -10,7 +10,7 @@ function displayLogin() {
     }
 }
 
-function init() {
+window.onload = function() {
     setTimeout(splashImageTransition, 1000);
     setTimeout(displayLogin, 2600);
 }

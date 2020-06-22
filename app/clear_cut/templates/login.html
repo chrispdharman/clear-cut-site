@@ -5,10 +5,9 @@
 <head>
     <title>ClearCut Login</title>
     <link rel="stylesheet" href="{% static 'login/index.css' %}" />
-    <script type="text/javascript" src="{% static 'login/utils.js' %}"></script>
 </head>
 
-<body onload="init()">
+<body>
     <div class="splash">
         <!-- Splash images -->
         <img class="final-image" src="{{ splash_image_final }}" alt="Final splash image">
@@ -23,6 +22,8 @@
             </li>
         </form>
     </div>
+
+<script type="text/javascript" src="{% static 'login/utils.js' %}"></script>
 </body>
 
 </html>

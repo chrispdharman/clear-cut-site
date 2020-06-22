@@ -5,13 +5,12 @@
 <head>
     <title>ClearCut Manage</title>
     <link rel="stylesheet" href="{% static 'manage/index.css' %}" />
-    <script type="text/javascript" src="{% static 'manage/utils.js' %}"></script>
 </head>
 
-<body onload="init()">
+<body>
     <!-- Actions bar -->
     <div class="actions">
-        <div class="display-clearcuts">Display clearcuts for all items</div>
+        <input type="checkbox" id="display-clear-cuts">Toggle clearcut displays for all items</input>
         <div class="create-item">Drag 'n' Drop Zone here</div>
         {% comment %} <form action="{% url 'list_create_media' %}" method="post">
             {% csrf_token %}
@@ -41,14 +40,24 @@
     <div class="container media-items">
         {% for media_item in media_items %}
         <div class="item-wrapper" data-id="{{media_item.id}}">
-            <p class="media-type-to-name" data-value={{media_item.media_type}}></p>
-            <div class="item-media">
-                <img class='clearcut-image' src="{{ media_item.media_url_clear_cut }}" alt="ClearCut media displayed">
-                <img class='original-image' src="{{ media_item.media_url_original }}" alt="Original media displayed">
+            <!-- Media item meta information here -->
+            <p class="item-media-type" data-value={{media_item.media_type}}></p>
+            <p class="item-description">{{media_item.description}}</p>
+            <p class="item-label">{{media_item.label}}</p>
+            
+            <!-- List all images for this media item -->
+            {% for image in media_item.clear_cut_image.all %}
+            <div class="item-media" data-id="{{ image.id }}">
+                <img class='clearcut-image' src="{{ image.media_url_clear_cut }}" alt="ClearCut media displayed">
+                <img class='original-image' src="{{ image.media_url_original }}" alt="Original media displayed">
             </div>
+            {% endfor %}
+
         </div>
         {% endfor %}
     </div>
+
+<script type="text/javascript" src="{% static 'manage/utils.js' %}"></script>
 </body>
 
 </html>
