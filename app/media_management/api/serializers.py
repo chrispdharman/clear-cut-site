@@ -13,7 +13,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', )
 
 
+class MediaImagesReadOnlySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MediaImage
+        fields = ('media_url_original', 'media_url_clear_cut', )
+        depth = 1
+
+
 class MediaItemSerializer(serializers.ModelSerializer):
+    clear_cut_image = MediaImagesReadOnlySerializer(read_only=True, many=True)
     media_type_name = serializers.SerializerMethodField()
 
     clear_cut_config = ClearCutConfigSerializer(read_only=True)
