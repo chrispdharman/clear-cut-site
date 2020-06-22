@@ -13,6 +13,30 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', )
 
 
+class MediaItemReadOnlySerializer(serializers.ModelSerializer):
+    media_type_name = serializers.SerializerMethodField()
+
+    clear_cut_config = ClearCutConfigSerializer(read_only=True)
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = MediaItem
+        fields = (
+            'id',
+            'description',
+            'label',
+            'media_type_name',
+            'clear_cut_config',
+            'user',
+        )
+        depth = 1
+    
+    def get_media_type_name(self, obj):
+        for element in constants.ALLOWED_MEDIA_TYPES:
+            if element[0] == obj.media_type:
+                return element[1]
+
+
 class MediaImagesReadOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = MediaImage
@@ -44,6 +68,8 @@ class MediaItemSerializer(serializers.ModelSerializer):
 
 
 class MediaImageSerializer(serializers.ModelSerializer):
+    media_item = MediaItemReadOnlySerializer(read_only=True, many=False)
+
     class Meta:
         model = MediaImage
         fields = '__all__'
