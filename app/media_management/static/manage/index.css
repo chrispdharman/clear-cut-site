@@ -1,7 +1,16 @@
+/* Courtesty of https://stackoverflow.com/questions/3540194/how-to-make-a-grid-like-graph-paper-grid-with-just-css */
+body {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgb(200, 230, 255) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(200, 230, 255) 1px, transparent 1px);
+}
+
 div.item-media {
     display: inline-block;
     position: relative;
     border: 1px grey dashed;
+    background-color: white;
 }
 
 div.item-media:hover .original-image {
@@ -13,7 +22,7 @@ div.item-media:hover .clearcut-image {
 }
 
 div.actions {
-    border: 1px black solid;
+    background-color: rgb(240, 240, 240);
 }
 
 div.action {
@@ -21,19 +30,24 @@ div.action {
     margin: 10px;
 }
 
-div.toggle label {
+label {
+    font-family: 'Merienda One', Helvetica, sans-serif;
     padding: 5px;
     background-color: coral;
     border: 1px black solid;
     border-radius: 50px;
 }
 
-div.toggle label:hover {
+div.action label:hover {
     cursor: pointer;
 }
 
-#display-clear-cuts {
+div.action input {
     display: none;
+}
+
+form {
+    margin-block-end: 0em;
 }
 
 .item-wrapper {
@@ -42,6 +56,28 @@ div.toggle label:hover {
     margin: 10px;
     border: 2px rebeccapurple solid;
     border-radius: 30px;
+    background-color: rgb(250, 227, 207);
+}
+
+.item-wrapper p {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p.tag {
+    display: inline-block;
+    padding: 3px;
+    margin: 3px;
+    margin-block-end: 0.5em;
+    border: 1px blue solid;
+    border-radius: 5px;
+}
+
+p.item-description {
+    padding: 3px;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    background-color: rgb(240, 240, 240);
+    border: 1px gray solid;
 }
 
 .media-items img {

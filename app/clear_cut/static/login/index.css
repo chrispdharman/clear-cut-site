@@ -1,3 +1,11 @@
+/* Courtesty of https://stackoverflow.com/questions/3540194/how-to-make-a-grid-like-graph-paper-grid-with-just-css */
+body {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgb(200, 230, 255) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(200, 230, 255) 1px, transparent 1px);
+}
+
 div.splash {
     height: 100%;
     margin: 0;
@@ -27,11 +35,11 @@ form {
 }
 
 p, input {
-    font-family: "Courier New", Courier;
+    font-family: 'Merienda One', Helvetica, sans-serif;
 }
 
 ul.errorlist {
-    font-family: "Courier New", Courier;
+    font-family: 'Courier New', Courier, monospace;
     color: red;
     background-color: cornsilk;
 }

@@ -27,11 +27,11 @@ function convertMediaType(params) {
     if (parseInt(media_type_value) != NaN) {
         switch (media_type_value) {
             case "1":
-                return "Image";
+                return "image";
             case "2":
-                return "Video";
+                return "video";
             default:
-                return "Unknown";
+                return "unknown";
         }
     }
 }
