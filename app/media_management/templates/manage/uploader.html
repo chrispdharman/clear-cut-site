@@ -1,39 +1,20 @@
 {% load static %}
+{% load rest_framework %}
 
 <html>
 
 <head>
     <title>ClearCut Upload</title>
     <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'manage/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'manage/uploader.css' %}" />
 </head>
 
 <body>
-    <!-- Actions bar -->
-    <div class="actions">
-        <!-- Create a new media item -->
-        <div class="action create-item">
-            <form action="{% url 'list_create_media' %}" method="get">
-                {% csrf_token %}
-                <input type="submit" id="create-new-media-item"/>
-                <label for="create-new-media-item" id="create-new-media-item-icon"><span>New Item</span></label>
-            </form>
-        </div>
-
-        <!-- Global toggle on/off ClearCut image display -->
-        <div class="action toggle">
-            <input type="checkbox" id="display-clear-cuts"/>
-            <label for="display-clear-cuts" id="display-clear-cuts-icon"><span id="display-clear-cuts-text">Toggle: ClearCut</span></label>
-        </div>
-
-        <!-- Global toggle on/off both image display -->
-        <div class="action spread">
-            <input type="checkbox" id="display-spread"/>
-            <label for="display-spread" id="display-spread-icon"><span id="display-spread-text">View: Spread</span></label>
-        </div>
-        
-        {% comment %} <form action="{% url 'list_create_media' %}" method="post">
+    <!-- Uploader -->
+    <div class=uploader>
+        <form action="{% url 'list_create_media' %}" method="post">
             {% csrf_token %}
+            {% render_form serializer template_pack='rest_framework/inline' %}
             <th>
                 <div class="add-media-item">
                     <p>New</p>
@@ -53,33 +34,10 @@
             <th>
                 <input type="text" id="clearcut-url" placeholder="ClearCut image url here" />
             </th>
-        </form> {% endcomment %}
+        </form>
     </div>
 
-    <!-- List media items -->
-    <div class="container media-items">
-        {% for media_item in media_items %}
-        <div class="item-wrapper" data-id="{{media_item.id}}">
-            <!-- Media item meta information here -->
-            <p class="item-description">{{media_item.description}}</p>
-            <div class="tags">
-                <p class="tag item-media-type" data-value={{media_item.media_type}}></p>
-                <p class="tag item-label">{{media_item.label}}</p>
-            </div>
-            
-            <!-- List all images for this media item -->
-            {% for image in media_item.clear_cut_image.all %}
-            <div class="item-media" data-id="{{ image.id }}">
-                <img class='clearcut-image' src="{{ image.media_url_clear_cut }}" alt="ClearCut media displayed">
-                <img class='original-image' src="{{ image.media_url_original }}" alt="Original media displayed">
-            </div>
-            {% endfor %}
-
-        </div>
-        {% endfor %}
-    </div>
-
-<script type="text/javascript" src="{% static 'manage/utils.js' %}"></script>
+<script type="text/javascript" src="{% static 'manage/uploader.js' %}"></script>
 </body>
 
 </html>

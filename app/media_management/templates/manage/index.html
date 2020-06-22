@@ -13,11 +13,9 @@
     <div class="actions">
         <!-- Create a new media item -->
         <div class="action create-item">
-            <form action="{% url 'list_create_media' %}" method="get">
-                {% csrf_token %}
-                <input type="submit" id="create-new-media-item"/>
-                <label for="create-new-media-item" id="create-new-media-item-icon"><span>New Item</span></label>
-            </form>
+            <a href="{% url 'item_uploader' %}" style="text-decoration:none; color:inherit;">
+                <label for="create-new-media-item" id="create-new-media-item-icon"><span>Upload Item</span></label>
+            </a>
         </div>
 
         <!-- Global toggle on/off ClearCut image display -->
