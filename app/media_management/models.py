@@ -12,9 +12,13 @@ class MediaItem(models.Model):
     """
     clear_cut_config = models.ForeignKey(ClearCutConfig, on_delete=models.CASCADE, null=True)
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     media_type = models.IntegerField(choices=constants.ALLOWED_MEDIA_TYPES, default=0)
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField(max_length=1048, null=True)
+
+    label = models.TextField(max_length=128, null=True)
 
 
 class MediaImage(models.Model):
