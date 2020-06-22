@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>ClearCut Manage</title>
+    <title>ClearCut Upload</title>
     <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static 'manage/index.css' %}" />
 </head>
@@ -31,6 +31,29 @@
             <input type="checkbox" id="display-spread"/>
             <label for="display-spread" id="display-spread-icon"><span id="display-spread-text">View: Spread</span></label>
         </div>
+        
+        {% comment %} <form action="{% url 'list_create_media' %}" method="post">
+            {% csrf_token %}
+            <th>
+                <div class="add-media-item">
+                    <p>New</p>
+                    <input type="submit" value="&#43;">
+                </div>
+            </th>
+            <th>
+                <select type="text" id="media-type">
+                    <option value="0">------</option>
+                    <option value="1">Image</option>
+                    <option value="2">Video</option>
+                </select>
+            </th>
+            <th>
+                <input type="text" id="original-url" placeholder="Original image url here" />
+            </th>
+            <th>
+                <input type="text" id="clearcut-url" placeholder="ClearCut image url here" />
+            </th>
+        </form> {% endcomment %}
     </div>
 
     <!-- List media items -->
@@ -56,7 +79,7 @@
         {% endfor %}
     </div>
 
-<script type="text/javascript" src="{% static 'manage/index.js' %}"></script>
+<script type="text/javascript" src="{% static 'manage/utils.js' %}"></script>
 </body>
 
 </html>

@@ -13,3 +13,13 @@ def index(request):
         'media_items': recent_media_items,
     }
     return HttpResponse(template.render(context, request))
+
+def uploader(request):
+    template = loader.get_template('manage/uploader.html')
+
+    recent_media_items = MediaItem.objects.order_by('-id')
+
+    context = {
+        'media_items': recent_media_items,
+    }
+    return HttpResponse(template.render(context, request))
