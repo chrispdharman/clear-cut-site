@@ -13,14 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', )
 
 
-class MediaImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MediaImage
-        fields = '__all__'
-        depth = 1
-
 class MediaItemSerializer(serializers.ModelSerializer):
-    clearcut_images = MediaImageSerializer(read_only=True, source='clearcut_image_set', many=True)
     media_type_name = serializers.SerializerMethodField()
 
     clear_cut_config = ClearCutConfigSerializer(read_only=True)
@@ -40,4 +33,17 @@ class MediaItemSerializer(serializers.ModelSerializer):
         for element in constants.ALLOWED_MEDIA_TYPES:
             if element[0] == obj.media_type:
                 return element[1]
-    
+
+
+class MediaImageSerializer(serializers.ModelSerializer):
+    media_item = MediaItemSerializer(read_only=True, many=False)
+
+    class Meta:
+        model = MediaImage
+        fields = '__all__'
+        depth = 1
+
+    def create(self, validated_data):
+        media_item_pk = self.context['view'].kwargs['pk']
+        validated_data['media_item'] = MediaItem.objects.get(pk=media_item_pk)
+        return super(MediaImageSerializer, self).create(validated_data)

@@ -1,7 +1,22 @@
 from rest_framework import generics
 
-from media_management.models import MediaItem
-from media_management.api.serializers import MediaItemSerializer
+from media_management.models import MediaItem, MediaImage
+from media_management.api.serializers import MediaItemSerializer, MediaImageSerializer
+
+
+class ListCreateMediaImageView(generics.ListCreateAPIView):
+    queryset = MediaImage.objects.all()
+    serializer_class = MediaImageSerializer
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'request': self.request,
+            'format': self.format_kwarg,
+            'view': self
+        } 
 
 
 class ListCreateMediaItemView(generics.ListCreateAPIView):
