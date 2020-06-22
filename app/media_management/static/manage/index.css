@@ -13,14 +13,6 @@ div.item-media {
     background-color: white;
 }
 
-div.hoverable:hover .original-image {
-    transform: translate(0, -101px);
-}
-
-div.hoverable:hover .clearcut-image {
-    transform: translate(0, 101px);
-}
-
 div.actions {
     background-color: rgb(240, 240, 240);
 }

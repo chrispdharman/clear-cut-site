@@ -69,7 +69,7 @@
             
             <!-- List all images for this media item -->
             {% for image in media_item.clear_cut_image.all %}
-            <div class="item-media hoverable" data-id="{{ image.id }}">
+            <div class="item-media" data-id="{{ image.id }}">
                 <img class='clearcut-image' src="{{ image.media_url_clear_cut }}" alt="ClearCut media displayed">
                 <img class='original-image' src="{{ image.media_url_original }}" alt="Original media displayed">
             </div>
