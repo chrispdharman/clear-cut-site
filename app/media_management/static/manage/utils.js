@@ -1,8 +1,8 @@
 document.getElementById("display-clear-cuts").onclick = function() {
-    if (this.checked) {
-        console.log('checkbox was checked?');
-    } else {
-        console.log('checkbox was unchecked?');
+    var clearCutImages = document.getElementsByClassName("clearcut-image");
+    var image_index = clearCutImages.length;
+    while (image_index--) {
+        clearCutImages[image_index].style.zIndex = this.checked ? "1": "0";
     }
 };
 
