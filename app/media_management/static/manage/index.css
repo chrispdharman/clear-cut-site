@@ -12,6 +12,30 @@ div.item-media:hover .clearcut-image {
     transform: translate(101px);
 }
 
+div.actions {
+    border: 1px black solid;
+}
+
+div.action {
+    display: inline-block;
+    margin: 10px;
+}
+
+div.toggle label {
+    padding: 5px;
+    background-color: coral;
+    border: 1px black solid;
+    border-radius: 50px;
+}
+
+div.toggle label:hover {
+    cursor: pointer;
+}
+
+#display-clear-cuts {
+    display: none;
+}
+
 .item-wrapper {
     display: inline-block;
     padding: 10px;

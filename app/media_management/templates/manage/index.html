@@ -10,8 +10,14 @@
 <body>
     <!-- Actions bar -->
     <div class="actions">
-        <input type="checkbox" id="display-clear-cuts">Toggle clearcut displays for all items</input>
-        <div class="create-item">Drag 'n' Drop Zone here</div>
+        <!-- Global toggle on/off ClearCut image display -->
+        <div class="action toggle">
+            <input type="checkbox" id="display-clear-cuts"/>
+            <label for="display-clear-cuts" id="display-clear-cuts-icon"><span>CC</span></label>
+        </div>
+        
+        <div class="action create-item">
+            <div class="create-item">Drag 'n' Drop Zone here</div>
         {% comment %} <form action="{% url 'list_create_media' %}" method="post">
             {% csrf_token %}
             <th>
@@ -34,6 +40,7 @@
                 <input type="text" id="clearcut-url" placeholder="ClearCut image url here" />
             </th>
         </form> {% endcomment %}
+        </div>
     </div>
 
     <!-- List media items -->>

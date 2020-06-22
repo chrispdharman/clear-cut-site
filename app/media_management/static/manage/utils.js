@@ -1,9 +1,13 @@
 document.getElementById("display-clear-cuts").onclick = function() {
+    // Take all clear cut images to the fore/background
     var clearCutImages = document.getElementsByClassName("clearcut-image");
     var image_index = clearCutImages.length;
     while (image_index--) {
         clearCutImages[image_index].style.zIndex = this.checked ? "1": "0";
     }
+
+    // Set opacity for the toggle icon
+    document.getElementById("display-clear-cuts-icon").style.backgroundColor = this.checked ? "white": "coral";
 };
 
 function parseAllMediaTypes(params) {
