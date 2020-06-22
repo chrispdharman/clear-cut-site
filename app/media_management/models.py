@@ -20,6 +20,10 @@ class MediaItem(models.Model):
 
     label = models.TextField(max_length=128, null=True)
 
+    # TODO: Should overwrite the save/create/perform_create method to call the Clear Cut API. This should deal with
+    #  i. saving a resized original image to S3, and
+    #  ii. saving all resulting images to S3.
+
 
 class MediaImage(models.Model):
     """
