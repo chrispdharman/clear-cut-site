@@ -25,7 +25,7 @@ class MediaImage(models.Model):
     """
     Data of a single processed image
     """
-    media_item = models.ForeignKey(MediaItem, on_delete=models.CASCADE, null=False)
+    media_item = models.ForeignKey(MediaItem, on_delete=models.CASCADE, null=False, related_name='clearcut_image')
 
     media_url_original = models.URLField(max_length=200)
 

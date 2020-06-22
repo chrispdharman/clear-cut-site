@@ -4,7 +4,7 @@ from rest_framework import serializers
 from clear_cut.api.serializers import ClearCutConfigSerializer
 from clear_cut.models import ClearCutConfig
 from media_management import constants
-from media_management.models import MediaItem
+from media_management.models import MediaItem, MediaImage
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -13,7 +13,14 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', )
 
 
+class MediaImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MediaImage
+        fields = '__all__'
+        depth = 1
+
 class MediaItemSerializer(serializers.ModelSerializer):
+    clearcut_images = MediaImageSerializer(read_only=True, source='clearcut_image_set', many=True)
     media_type_name = serializers.SerializerMethodField()
 
     clear_cut_config = ClearCutConfigSerializer(read_only=True)
