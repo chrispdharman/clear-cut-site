@@ -10,30 +10,25 @@
 </head>
 
 <body>
-    <!-- Uploader -->
-    <div class=uploader>
+    <div class="uploader">
         <form action="{% url 'list_create_media' %}" method="post">
             {% csrf_token %}
-            {% render_form serializer template_pack='rest_framework/inline' %}
-            <th>
-                <div class="add-media-item">
-                    <p>New</p>
-                    <input type="submit" value="&#43;">
-                </div>
-            </th>
-            <th>
-                <select type="text" id="media-type">
-                    <option value="0">------</option>
-                    <option value="1">Image</option>
-                    <option value="2">Video</option>
-                </select>
-            </th>
-            <th>
-                <input type="text" id="original-url" placeholder="Original image url here" />
-            </th>
-            <th>
-                <input type="text" id="clearcut-url" placeholder="ClearCut image url here" />
-            </th>
+
+            <!-- Form meta data -->
+            <div class="meta">
+                {% render_form serializer template_pack='rest_framework/inline' %}
+                <input type="submit" id="upload-item">
+                <label class="button" for="upload-item" id="upload-item-icon"><span id="upload-item-text">Upload</span></label>
+            </div>
+
+            <!-- Actual media uploader -->
+            <!-- See https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/ -->
+            <div class="dropzone" id="dropzone">
+                <p>Upload multiple files via file selection or drag 'n' drop</p>
+                <div id="gallery"></div>
+                <input type="file" id="file-uploader" multiple accept="image/*" onchange="handleFiles(this.files)">
+                <label class="button" for="file-uploader" id="file-uploader icon">Select some files</label>
+            </div>
         </form>
     </div>
 

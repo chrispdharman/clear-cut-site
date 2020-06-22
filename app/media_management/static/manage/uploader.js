@@ -1,77 +1,51 @@
-document.getElementById("display-clear-cuts").onclick = function() {
-    var zIndexValue = this.checked ? "1": "0";
-
-    // Take all clear cut images to the fore/background
-    var images = document.getElementsByClassName("clearcut-image");
-    var image_index = images.length;
-    while (image_index--) {
-        images[image_index].style.zIndex = zIndexValue;
-    }
-
-    // Other toggle display changes
-    if (this.checked) {
-        document.getElementById("display-clear-cuts-icon").style.backgroundColor = "white";
-        document.getElementById("display-clear-cuts-text").innerHTML = "Toggle: Original";
-    } else {
-        document.getElementById("display-clear-cuts-icon").style.backgroundColor = "paleturquoise";
-        document.getElementById("display-clear-cuts-text").innerHTML = "Toggle: ClearCut";
-    }
-};
-
-document.getElementById("display-spread").onclick = function() {
-    var originalImageTranlation = this.checked ? "translate(0, -101px)": "translate(0, 0)";
-    var clearCutImageTranlation = this.checked ? "translate(0, 101px)": "translate(0, 0)";
-
-    // Translate all original images (and turn off hover behaviour)
-    var images = document.getElementsByClassName("original-image");
-    var image_index = images.length;
-    while (image_index--) {
-        images[image_index].style.transform = originalImageTranlation;
-    }
-
-    // Translate all clear cut images (and turn off hover behaviour)
-    var images = document.getElementsByClassName("clearcut-image");
-    var image_index = images.length;
-    while (image_index--) {
-        images[image_index].style.transform = clearCutImageTranlation;
-    }
-
-    // Other toggle display changes
-    if (this.checked) {
-        document.getElementById("display-spread-icon").style.backgroundColor = "white";
-        document.getElementById("display-spread-text").innerHTML = "View: Single";
-    } else {
-        document.getElementById("display-spread-icon").style.backgroundColor = "paleturquoise";
-        document.getElementById("display-spread-text").innerHTML = "View: Spread";
-    }
-};
-
-function parseAllMediaTypes(params) {
-    // Convert all media type values from integers to strings
-    var media_type_elements = document.getElementsByClassName("item-media-type");
-    var media_type_index = media_type_elements.length;
-
-    while(media_type_index--) {
-        var element = media_type_elements[media_type_index];
-        var mediaType = element.getAttribute("data-value");
-        element.innerHTML = convertMediaType(mediaType);
-    };
+function preventDefaults (event) {
+    event.preventDefault()
+    event.stopPropagation()
 }
 
-function convertMediaType(params) {
-    var media_type_value = params[0];
-    if (parseInt(media_type_value) != NaN) {
-        switch (media_type_value) {
-            case "1":
-                return "image";
-            case "2":
-                return "video";
-            default:
-                return "unknown";
-        }
+function handleDragEnter(event) {
+    preventDefaults(event);
+    document.getElementById('dropzone').style.borderColor = "royalblue";
+}
+
+function handleDragLeave(event) {
+    preventDefaults(event);
+    document.getElementById('dropzone').style.borderColor = "grey";
+}
+
+function handleDragOver(event) {
+    preventDefaults(event);
+    document.getElementById('dropzone').style.borderColor = "royalblue";
+}
+
+function handleDrop(event) {
+    preventDefaults(event);
+    document.getElementById('dropzone').style.borderColor = "grey";
+
+    var files = event.dataTransfer.files;
+    handleFiles(files);
+}
+
+function handleFiles(files) {
+    Array.from(files).forEach(previewFile);
+}
+
+function previewFile(file) {
+    // Display a preview of the uploaded media
+    var reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onloadend = function() {
+        var img = document.createElement('img');
+        img.src = reader.result;
+        document.getElementById('gallery').appendChild(img);
     }
 }
 
 window.onload = function() {
-    parseAllMediaTypes();
+    // Dropzone event listeners
+    document.getElementById('dropzone').addEventListener('dragenter', handleDragEnter, false);
+    document.getElementById('dropzone').addEventListener('dragleave', handleDragLeave, false);
+    document.getElementById('dropzone').addEventListener('dragover', handleDragOver, false);
+    document.getElementById('dropzone').addEventListener('drop', handleDrop, false);
 }
