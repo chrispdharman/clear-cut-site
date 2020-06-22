@@ -1,13 +1,49 @@
 document.getElementById("display-clear-cuts").onclick = function() {
+    var zIndexValue = this.checked ? "1": "0";
+
     // Take all clear cut images to the fore/background
-    var clearCutImages = document.getElementsByClassName("clearcut-image");
-    var image_index = clearCutImages.length;
+    var images = document.getElementsByClassName("clearcut-image");
+    var image_index = images.length;
     while (image_index--) {
-        clearCutImages[image_index].style.zIndex = this.checked ? "1": "0";
+        images[image_index].style.zIndex = zIndexValue;
     }
 
-    // Set opacity for the toggle icon
-    document.getElementById("display-clear-cuts-icon").style.backgroundColor = this.checked ? "white": "coral";
+    // Other toggle display changes
+    if (this.checked) {
+        document.getElementById("display-clear-cuts-icon").style.backgroundColor = "white";
+        document.getElementById("display-clear-cuts-text").innerHTML = "Toggle: Original";
+    } else {
+        document.getElementById("display-clear-cuts-icon").style.backgroundColor = "coral";
+        document.getElementById("display-clear-cuts-text").innerHTML = "Toggle: ClearCut";
+    }
+};
+
+document.getElementById("display-spread").onclick = function() {
+    var originalImageTranlation = this.checked ? "translate(0, -101px)": "translate(0, 0)";
+    var clearCutImageTranlation = this.checked ? "translate(0, 101px)": "translate(0, 0)";
+
+    // Translate all original images (and turn off hover behaviour)
+    var images = document.getElementsByClassName("original-image");
+    var image_index = images.length;
+    while (image_index--) {
+        images[image_index].style.transform = originalImageTranlation;
+    }
+
+    // Translate all clear cut images (and turn off hover behaviour)
+    var images = document.getElementsByClassName("clearcut-image");
+    var image_index = images.length;
+    while (image_index--) {
+        images[image_index].style.transform = clearCutImageTranlation;
+    }
+
+    // Other toggle display changes
+    if (this.checked) {
+        document.getElementById("display-spread-icon").style.backgroundColor = "white";
+        document.getElementById("display-spread-text").innerHTML = "View: Single";
+    } else {
+        document.getElementById("display-spread-icon").style.backgroundColor = "coral";
+        document.getElementById("display-spread-text").innerHTML = "View: Spread";
+    }
 };
 
 function parseAllMediaTypes(params) {

@@ -13,11 +13,11 @@ div.item-media {
     background-color: white;
 }
 
-div.item-media:hover .original-image {
+div.hoverable:hover .original-image {
     transform: translate(0, -101px);
 }
 
-div.item-media:hover .clearcut-image {
+div.hoverable:hover .clearcut-image {
     transform: translate(0, 101px);
 }
 

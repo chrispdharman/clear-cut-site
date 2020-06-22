@@ -23,7 +23,13 @@
         <!-- Global toggle on/off ClearCut image display -->
         <div class="action toggle">
             <input type="checkbox" id="display-clear-cuts"/>
-            <label for="display-clear-cuts" id="display-clear-cuts-icon"><span>CC</span></label>
+            <label for="display-clear-cuts" id="display-clear-cuts-icon"><span id="display-clear-cuts-text">Toggle: ClearCut</span></label>
+        </div>
+
+        <!-- Global toggle on/off both image display -->
+        <div class="action spread">
+            <input type="checkbox" id="display-spread"/>
+            <label for="display-spread" id="display-spread-icon"><span id="display-spread-text">View: Spread</span></label>
         </div>
         
         {% comment %} <form action="{% url 'list_create_media' %}" method="post">
@@ -63,7 +69,7 @@
             
             <!-- List all images for this media item -->
             {% for image in media_item.clear_cut_image.all %}
-            <div class="item-media" data-id="{{ image.id }}">
+            <div class="item-media hoverable" data-id="{{ image.id }}">
                 <img class='clearcut-image' src="{{ image.media_url_clear_cut }}" alt="ClearCut media displayed">
                 <img class='original-image' src="{{ image.media_url_original }}" alt="Original media displayed">
             </div>
