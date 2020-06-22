@@ -10,8 +10,6 @@ class MediaItem(models.Model):
     """
     Object intended to capture and Image pre- and post-processing storage .
     """
-    clear_cut_images = models.ManyToManyField('self', symmetrical=False)
-
     clear_cut_config = models.ForeignKey(ClearCutConfig, on_delete=models.CASCADE, null=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
