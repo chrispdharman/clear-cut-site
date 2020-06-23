@@ -6,6 +6,10 @@ body {
       linear-gradient(to bottom, rgb(200, 230, 255) 1px, transparent 1px);
 }
 
+div.uploader {
+    height: auto;
+}
+
 div.dropzone {
     border-radius: 20px;
     width: 580px;
@@ -15,6 +19,10 @@ div.dropzone {
     border: 2px dashed grey;
     background-color: white;
     overflow: auto;
+}
+
+div.dropzone p {
+    display: inline-block;
 }
 
 #gallery {
@@ -35,7 +43,6 @@ form label.button {
     background-color: paleturquoise;
     border: 1px black solid;
     border-radius: 50px;
-    float: right;
 }
 
 form label.button:hover {
@@ -46,14 +53,20 @@ form #upload-item, #file-uploader {
     display: none;
 }
 
+#upload-item-icon {
+    float: right;
+}
+
 div.meta {
-    top: 0;
+    bottom: 0;
     position: sticky;
     position: -webkit-sticky; /* Safari */
     text-align: left;
     padding: 20px;
     padding-left: 20%;
     background-color: white;
+    border-top: 1px black solid;
+    float: bottom;
     z-index: 2;
     overflow: auto;
 }
