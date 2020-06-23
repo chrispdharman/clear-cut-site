@@ -27,7 +27,18 @@ function handleDrop(event) {
 }
 
 function handleFiles(files) {
+    document.getElementById('file-upload-error').style.display = "none";
+
+    var uploaded_files = document.getElementById('gallery').childNodes;
+    
+    if (files.length + uploaded_files.length > 1) {
+        var error_message = 'Can only upload a single file';
+        document.getElementById('file-upload-error').style.display = "block";
+        document.getElementById('file-upload-error').innerHTML = error_message;
+        throw(error_message);
+    }
     Array.from(files).forEach(previewFile);
+    // Array.from(files).forEach(includeFileToPayload);
 }
 
 function previewFile(file) {

@@ -17,9 +17,10 @@
             <!-- Actual media uploader -->
             <!-- See https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/ -->
             <div class="dropzone" id="dropzone">
-                <p>Upload files by drag and drop or</p>
-                <input type="file" id="file-uploader" multiple accept="image/*" onchange="handleFiles(this.files)">
+                <p>Upload an image/video by drag and drop or</p>
+                <input type="file" id="file-uploader" accept="image/*,video/*" onchange="handleFiles(this.files)">
                 <label class="button" for="file-uploader" id="file-uploader icon">Select Files</label>
+                <p class="file-upload-error" id="file-upload-error"></p>
                 <div id="gallery"></div>
             </div>
 
@@ -27,7 +28,7 @@
             <div class="meta">
                 {% render_form serializer template_pack='rest_framework/inline' %}
                 <input type="submit" id="upload-item">
-                <label class="button" for="upload-item" id="upload-item-icon"><span id="upload-item-text">Upload Item</span></label>
+                <label class="button" for="upload-item" id="upload-item-icon"><span id="upload-item-text">Save Item</span></label>
             </div>
         </form>
     </div>
