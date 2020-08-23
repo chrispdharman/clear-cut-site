@@ -1,7 +1,26 @@
-from rest_framework import generics
+from rest_framework import generics, views
+from rest_framework.response import Response
 
-from media_management.models import MediaItem, MediaImage
 from media_management.api.serializers import MediaItemSerializer, MediaImageSerializer
+from media_management.models import MediaItem, MediaImage
+from media_management.services.clear_cut_processor import ClearCutProcessorService
+
+
+class ClearCutAPI(views.APIView):
+    _clear_cut_service = None
+
+    @property
+    def clear_cut_service(self):
+        if not self._clear_cut_service:
+            self._clear_cut_service = ClearCutProcessorService()
+        
+        return self._clear_cut_service
+
+    def post(self, request, *args, **kwargs):
+        # Receive a request and response accordingly
+        self.clear_cut_service.process_image(request.data['url'])
+
+        return Response(data='Successfully processed and stored media.')
 
 
 class ListCreateMediaImageView(generics.ListCreateAPIView):
@@ -16,7 +35,7 @@ class ListCreateMediaImageView(generics.ListCreateAPIView):
             'request': self.request,
             'format': self.format_kwarg,
             'view': self
-        } 
+        }
 
 
 class ListCreateMediaItemView(generics.ListCreateAPIView):

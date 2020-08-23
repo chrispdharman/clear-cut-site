@@ -4,10 +4,16 @@ from media_management.api.views import (
     ListCreateMediaImageView,
     ListCreateMediaItemView,
     RetrieveUpdateDestroyMediaItemView,
+    ClearCutAPI,
 )
 
 
 urlpatterns = [
+    path(
+        'process-media/',
+        ClearCutAPI.as_view(),
+        name='process_media',
+    ),
     path(
         'media-items/<int:pk>/clear-cut-images/',
         ListCreateMediaImageView.as_view(),
@@ -21,6 +27,6 @@ urlpatterns = [
     path(
         'media-items/',
         ListCreateMediaItemView.as_view(),
-        name='list_create_media',
+        name='list_create_items',
     ),
 ]

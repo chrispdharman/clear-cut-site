@@ -3,6 +3,20 @@ function preventDefaults (event) {
     event.stopPropagation()
 }
 
+function fireRequest(request) {
+    // Populate any missing request details with defaults
+    url = window.origin.concat(request.endpoint);
+    verb = request.verb || 'GET';
+    data = request.data || {};
+
+    // Build and send request
+    var xhr = new XMLHttpRequest();
+    xhr.open(verb, url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('X-CSRFToken', window.csrftoken);
+    xhr.send(JSON.stringify(data));
+}
+
 function handleDragEnter(event) {
     preventDefaults(event);
     document.getElementById('dropzone').style.borderColor = "royalblue";
@@ -38,7 +52,6 @@ function handleFiles(files) {
         throw(error_message);
     }
     Array.from(files).forEach(previewFile);
-    // Array.from(files).forEach(includeFileToPayload);
 }
 
 function previewFile(file) {
@@ -51,6 +64,21 @@ function previewFile(file) {
         img.src = reader.result;
         document.getElementById('gallery').appendChild(img);
     }
+}
+
+function saveItem() {
+    // Gather uploaded media
+    var mediaEntries = document.getElementById('gallery').childNodes;
+    mediaEntries.forEach(function(mediaEntry) {
+        // Hit one of the media uploaded
+        fireRequest({
+            endpoint: window.endpoints.processMedia,
+            verb: 'POST',
+            data: {
+                url: mediaEntry.src
+            }
+        });
+    });
 }
 
 window.onload = function() {
