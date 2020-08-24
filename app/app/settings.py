@@ -125,6 +125,10 @@ AUTH_PASSWORD_VALIDATORS = [
 LOGIN_REDIRECT_URL = '/manage/'
 LOGOUT_REDIRECT_URL = '/login/'
 
+# Miscellaneous Urls
+CLEAR_CUT_URL = 'https://58ige3pf51.execute-api.eu-west-2.amazonaws.com/prod/process'
+CLEAR_CUT_API_KEY = os.environ['CLEAR_CUT_API_KEY']
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 

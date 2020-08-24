@@ -1,3 +1,4 @@
+import base64
 from rest_framework import generics, views
 from rest_framework.response import Response
 
@@ -18,9 +19,18 @@ class ClearCutAPI(views.APIView):
 
     def post(self, request, *args, **kwargs):
         # Receive a request and response accordingly
-        self.clear_cut_service.process_image(request.data['url'])
+        decoded_image = self._decode_image(request.data['image'])
+
+        self.clear_cut_service.process_image(decoded_image)
 
         return Response(data='Successfully processed and stored media.')
+    
+    def _decode_image(self, encoded_image):
+        """
+        Convert the base 64 encoded image to binary encoding
+        """
+        base64_encoded_image = re.search(r'base64,(.*)', encoded_image).group(1)
+        return base64.b64decode(base64_encoded_image)
 
 
 class ListCreateMediaImageView(generics.ListCreateAPIView):

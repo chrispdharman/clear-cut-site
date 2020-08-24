@@ -75,7 +75,7 @@ function saveItem() {
             endpoint: window.endpoints.processMedia,
             verb: 'POST',
             data: {
-                url: mediaEntry.src
+                image: mediaEntry.src
             }
         });
     });
