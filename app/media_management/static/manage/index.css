@@ -85,7 +85,6 @@ p.item-description {
 
 .media-items img.clearcut-image {
     position: relative;
-    bottom: -100px;
     -webkit-transition: transform 1.0s;
     -moz-transition: transform 1.0s;
     -o-transition: transform 1.0s;
@@ -94,7 +93,6 @@ p.item-description {
 
 .media-items img.original-image {
     position: relative;
-    bottom: 100px;
     -webkit-transition: transform 1.0s;
     -moz-transition: transform 1.0s;
     -o-transition: transform 1.0s;

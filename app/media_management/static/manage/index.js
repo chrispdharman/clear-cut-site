@@ -19,21 +19,26 @@ document.getElementById("display-clear-cuts").onclick = function() {
 };
 
 document.getElementById("display-spread").onclick = function() {
-    var originalImageTranlation = this.checked ? "translate(0, -101px)": "translate(0, 0)";
-    var clearCutImageTranlation = this.checked ? "translate(0, 101px)": "translate(0, 0)";
-
     // Translate all original images (and turn off hover behaviour)
     var images = document.getElementsByClassName("original-image");
     var image_index = images.length;
     while (image_index--) {
-        images[image_index].style.transform = originalImageTranlation;
+        if (this.checked) {
+            images[image_index].style.transform = "translate(0, -".concat(images[image_index].height/2).concat("px)");
+        } else {
+            images[image_index].style.transform = "translate(0, 0)";
+        }
     }
 
     // Translate all clear cut images (and turn off hover behaviour)
     var images = document.getElementsByClassName("clearcut-image");
     var image_index = images.length;
     while (image_index--) {
-        images[image_index].style.transform = clearCutImageTranlation;
+        if (this.checked) {
+            images[image_index].style.transform = "translate(0, ".concat(images[image_index].height/2).concat("px)");
+        } else {
+            images[image_index].style.transform = "translate(0, 0)";
+        }
     }
 
     // Other toggle display changes
