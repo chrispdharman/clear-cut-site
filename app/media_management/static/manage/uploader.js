@@ -3,7 +3,7 @@ function preventDefaults (event) {
     event.stopPropagation()
 }
 
-function fireRequest(request) {
+function fireRequest(request, callback) {
     // Populate any missing request details with defaults
     url = window.origin.concat(request.endpoint);
     verb = request.verb || 'GET';
@@ -11,7 +11,14 @@ function fireRequest(request) {
 
     // Build and send request
     var xhr = new XMLHttpRequest();
-    xhr.open(verb, url, true);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            callback(xhr.response);
+        }
+    }
+
+    xhr.open(verb, url, false);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('X-CSRFToken', window.csrftoken);
     xhr.send(JSON.stringify(data));
@@ -67,7 +74,25 @@ function previewFile(file) {
 }
 
 function saveItem() {
-    // Gather uploaded media
+    // Create item
+    var metaElement = document.getElementsByClassName('meta')[0];
+
+    var formData = new Object();
+    metaElement.querySelectorAll('.form-control').forEach(function(fieldNode) {
+        formData[fieldNode.name] = fieldNode.value;
+    });
+
+    console.log('formData', formData);
+
+    item_id = fireRequest({
+        endpoint: window.endpoints.processItem,
+        verb: 'POST',
+        data: formData
+    }, saveMedia);
+}
+
+function saveMedia(saved_item_response) {
+    // Process uploaded media
     var mediaEntries = document.getElementById('gallery').childNodes;
     mediaEntries.forEach(function(mediaEntry) {
         // Hit one of the media uploaded
@@ -75,7 +100,8 @@ function saveItem() {
             endpoint: window.endpoints.processMedia,
             verb: 'POST',
             data: {
-                image: mediaEntry.src
+                image: mediaEntry.src,
+                item_id: saved_item_response
             }
         });
     });

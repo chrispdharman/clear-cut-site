@@ -18,7 +18,7 @@ class ClearCutAPI(views.APIView):
 
     def post(self, request, *args, **kwargs):
         # Receive a request and response accordingly
-        self.clear_cut_service.process_image(request.data['image'])
+        original_s3_url, clear_cut_s3_url = self.clear_cut_service.process_image(request.data['image'])
 
         return Response(data='Successfully processed and stored media.')
 
