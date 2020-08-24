@@ -27,7 +27,7 @@ class ClearCutProcessorService:
 
         saved_s3_location = response.json()['s3_results']
 
-        original_s3_url = f'{}/0001_size_reduced_image.png'
-        clear_cut_s3_url = f'{}/0008_edge_masked_image.png'
+        original_s3_url = f'{saved_s3_location}/0001_size_reduced_image.png'
+        clear_cut_s3_url = f'{saved_s3_location}/0008_edge_masked_image.png'
 
         return original_s3_url, clear_cut_s3_url
