@@ -92,6 +92,8 @@ function saveItem() {
 }
 
 function saveMedia(saved_item_response) {
+    var item_id = JSON.parse(saved_item_response).id;
+
     // Process uploaded media
     var mediaEntries = document.getElementById('gallery').childNodes;
     mediaEntries.forEach(function(mediaEntry) {
@@ -101,7 +103,7 @@ function saveMedia(saved_item_response) {
             verb: 'POST',
             data: {
                 image: mediaEntry.src,
-                item_id: saved_item_response
+                item_id: item_id
             }
         });
     });
