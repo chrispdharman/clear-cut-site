@@ -1,5 +1,5 @@
-class ClearCutLambdaAPITimeout(Exception):
+class ClearCutLambdaError(Exception):
     """
-    Raised when the clear cut lambda times out
+    Raised when the clear cut lambda errors, including timing out
     """
-    pass
+    message = 'Error occured in the Clear Cut lambda API. This includes the possibility of a timeout.'

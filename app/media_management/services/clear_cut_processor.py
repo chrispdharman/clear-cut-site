@@ -2,7 +2,7 @@ import json
 import requests
 
 from django.conf import settings
-from media_management.errors import ClearCutLambdaAPITimeout
+from media_management.errors import ClearCutLambdaError
 
 
 class ClearCutProcessorService:
@@ -25,7 +25,7 @@ class ClearCutProcessorService:
         try:
             saved_s3_location = response.json()['s3_results']
         except KeyError:
-            raise ClearCutLambdaTimeout
+            raise ClearCutLambdaError
 
         original_s3_url = f'{saved_s3_location}0001_size_reduced_image.png'
         clear_cut_s3_url = f'{saved_s3_location}0008_edge_masked_image.png'
