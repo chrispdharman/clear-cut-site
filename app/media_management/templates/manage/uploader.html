@@ -17,6 +17,9 @@
 </head>
 
 <body>
+    <!-- Navigation-->
+    {% include 'manage/navigation.html' %}
+
     <div class="uploader">
         <form onsubmit="saveItem()">
             {% csrf_token %}

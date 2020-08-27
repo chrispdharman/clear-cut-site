@@ -1,0 +1,24 @@
+{% load static %}
+
+<html>
+
+<head>
+    <title>Navigation</title>
+    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'manage/navigation.css' %}" />
+</head>
+
+<body>
+    {% block nav %}
+    <div class="navigation">
+        <img class="logo" src="{{ menu_logo }}" alt="Clear Cut Logo">
+        <div class="menu-stretcher"></div>
+        <ul id="nav">
+            <li>{% block nav-logout%}<a href="{% url 'logout' %}">Logout</a>{% endblock %}</li>
+            <li>{% block nav-media-manager %}<a href="{% url 'index' %}">Manage Media</a>{% endblock %}</li>
+        </ul>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

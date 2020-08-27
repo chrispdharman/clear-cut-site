@@ -1,4 +1,9 @@
 /* Courtesty of https://stackoverflow.com/questions/3540194/how-to-make-a-grid-like-graph-paper-grid-with-just-css */
+* {
+    color: black;
+    font-family: Verdana, Helvetica, sans-serif;
+}
+
 body {
     background-size: 40px 40px;
     background-image:
@@ -27,7 +32,6 @@ div.action {
 }
 
 label {
-    font-family: 'Courier New', Courier, monospace;
     padding: 5px;
     background-color: paleturquoise;
     border: 1px black solid;
@@ -54,10 +58,6 @@ form {
     border-radius: 30px;
     background-color: paleturquoise;
     box-shadow: 2px 2px royalblue;
-}
-
-.item-wrapper p {
-    font-family: 'Merienda One', Helvetica, sans-serif;
 }
 
 p.tag {
