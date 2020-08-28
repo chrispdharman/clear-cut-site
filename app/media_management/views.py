@@ -19,7 +19,7 @@ def _parse_context(additional_context=None):
 def index(request):
     template = loader.get_template('manage/index.html')
 
-    recent_media_items = MediaItem.objects.order_by('-id')
+    recent_media_items = MediaItem.objects.order_by('label', '-id')
 
     context = _parse_context({
         'media_items': recent_media_items,
