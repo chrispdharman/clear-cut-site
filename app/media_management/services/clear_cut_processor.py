@@ -21,9 +21,11 @@ class ClearCutProcessorService:
         except (TypeError, AttributeError):
             pass
 
+        request_data = json.dumps(request_data)
+
         response = requests.post(
             url=settings.CLEAR_CUT_URL,
-            json=json.dumps(request_data),
+            json=request_data,
             headers={
                 'Content-Type': 'application/json',
                 'X-Api-Key': settings.CLEAR_CUT_API_KEY,
