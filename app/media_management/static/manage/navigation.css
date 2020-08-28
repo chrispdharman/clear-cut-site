@@ -14,30 +14,55 @@ div.navigation {
 .navigation * {
     display: inline-block;
     vertical-align: middle;
+    margin-left: -1px;
+    margin-right: -4px;
 }
 
 .navigation img.logo {
     height: 100px;
+    margin-left: 0px;
 }
 
-div.menu-stretcher {
+div.menu-expander {
+    text-align: center;
+    height: max-content;
+}
+
+div.menu-expander::after {
     display: inline-block;
+    content: '\27AA';
+    font-size: 38;
     width: 50px;
-    height: 50px;
-    background-color: aqua;
+    transition: color 1s;
 }
 
-div.menu-stretcher:hover {
+div.menu-expander:hover {
+    color: royalblue;
+    animation-name: spin;
+    animation-duration: 300ms;
+    animation-iteration-count: initial;
+    animation-timing-function: linear;
+}
+
+div.menu-expander:hover + ul {
+    display: inline-block;
+}
+
+div.ul:hover + ul {
     display: inline-block;
 }
 
 .navigation ul {
+    display: none;
+    padding-inline-start: 0px;
+}
+
+.navigation ul:hover {
     display: inline-block;
 }
 
 .navigation li {
     float: right;
-    padding: 0px 30px 0px 30px;
     border: black 1pm solid;
 }
 
@@ -52,4 +77,13 @@ div.menu-stretcher:hover {
 
 .navigation li a:hover {
     background-color: turquoise;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }

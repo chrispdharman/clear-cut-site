@@ -12,7 +12,7 @@
     {% block nav %}
     <div class="navigation">
         <img class="logo" src="{{ menu_logo }}" alt="Clear Cut Logo">
-        <div class="menu-stretcher"></div>
+        <div class="menu-expander"></div>
         <ul id="nav">
             <li>{% block nav-logout%}<a href="{% url 'logout' %}">Logout</a>{% endblock %}</li>
             <li>{% block nav-media-manager %}<a href="{% url 'index' %}">Manage Media</a>{% endblock %}</li>
