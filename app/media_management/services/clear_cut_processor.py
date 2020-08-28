@@ -33,10 +33,10 @@ class ClearCutProcessorService:
         )
 
         try:
-            print(f'response={response}')
             saved_s3_location = response.json()['s3_results']
         except KeyError:
-            raise ClearCutLambdaError
+            print(f'response={response}')
+            raise ClearCutLambdaError(f'[{response.status_code}] {response.json()}')
 
         original_s3_url = f'{saved_s3_location}0001_size_reduced_image.png'
         clear_cut_s3_url = f'{saved_s3_location}0008_edge_masked_image.png'
