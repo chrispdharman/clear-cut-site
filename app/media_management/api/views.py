@@ -17,11 +17,16 @@ class ClearCutAPI(views.APIView):
         return self._clear_cut_service
 
     def post(self, request, *args, **kwargs):
+        item = MediaItem.objects.get(id=request.data['item_id'])
+
         # Receive a request and response accordingly
-        original_s3_url, clear_cut_s3_url = self.clear_cut_service.process_image(request.data['image'])
+        original_s3_url, clear_cut_s3_url = self.clear_cut_service.process_image(
+            request.data['image'],
+            clear_cut_config=item.clear_cut_config,   
+        )
 
         MediaImage.objects.create(
-            media_item_id=request.data['item_id'],
+            media_item=item,
             media_url_original=original_s3_url,
             media_url_clear_cut=clear_cut_s3_url,
         )
